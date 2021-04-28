@@ -12,9 +12,12 @@ function RenderItem(props) {
         if (item != null) {
             return(
                 <Card>
-                    <Card.Title>{item.nombre}</Card.Title>
                     <Card.Divider/>
-                    <Card.Image source={require('./imagenes/40Años.png')}></Card.Image>
+                    <Card.Image source={require('./imagenes/40Años.png')} >
+                        <View style={{position: 'absolute', top: -100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+                            <Card.Title style={{color:'chocolate', fontSize: 33}}>{item.nombre}</Card.Title>
+                        </View>
+                    </Card.Image>
                     <Text style={{margin: 20}}>
                         {item.descripcion}
                     </Text>
@@ -25,6 +28,7 @@ function RenderItem(props) {
             return(<View></View>);
         }
 }
+
 
 class Home extends Component {
 

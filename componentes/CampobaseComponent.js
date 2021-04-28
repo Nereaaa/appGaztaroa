@@ -6,6 +6,8 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './HomeComponent';
+import Contacto from './ContactoComponent';
+import QuienesSomos from './QuienesSomosComponent';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
@@ -20,6 +22,7 @@ function CalendarioNavegador() {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: '#015afc' },
         headerTitleStyle: { color: '#fff' },
+        headerTitleAlign: 'center',
       }}
     >
       <Stack.Screen
@@ -49,6 +52,7 @@ function HomeNavegador() {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: '#015afc' },
         headerTitleStyle: { color: '#fff' },
+        headerTitleAlign: 'center',
       }}
     >
       <Stack.Screen
@@ -56,6 +60,52 @@ function HomeNavegador() {
         component={Home}
         options={{
           title: 'Campo Base',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function ContactoNavegador() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Contacto"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#015afc' },
+        headerTitleStyle: { color: '#fff' },
+        headerTitleAlign: 'center',
+      }}
+    >
+      <Stack.Screen
+        name="Contacto"
+        component={Contacto}
+        options={{
+          title: 'Contacto',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function QuienesSomosNavegador() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Quienes Somos"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#015afc' },
+        headerTitleStyle: { color: '#fff' },
+        headerTitleAlign: 'center',
+      }}
+    >
+      <Stack.Screen
+        name="Quienes Somos"
+        component={QuienesSomos}
+        options={{
+          title: 'Quienes Somos',
         }}
       />
     </Stack.Navigator>
@@ -70,8 +120,11 @@ function DrawerNavegador() {
       }}
       initialRouteName="Home"
       >
-        <Drawer.Screen name="Home" component={HomeNavegador} />
+        <Drawer.Screen name="Campo base" component={HomeNavegador} />
+        <Drawer.Screen name="Quienes Somos" component={QuienesSomosNavegador} />
         <Drawer.Screen name="Calendario" component={CalendarioNavegador} />
+        <Drawer.Screen name="Contacto" component={ContactoNavegador} />
+        
       </Drawer.Navigator>
   );
 }
