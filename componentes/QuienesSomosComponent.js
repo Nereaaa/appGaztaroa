@@ -53,7 +53,6 @@ function RenderQuienesSomos(props) {
         </Card>
       );
   }
-
 class QuienesSomos extends Component {
     constructor(props) {
         super(props);
