@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, ScrollView } from 'react-native';
 import { Card } from 'react-native-elements';
 import { ListItem, Avatar } from 'react-native-elements';
-import { SafeAreaView, FlatList } from 'react-native';
+import {  FlatList } from 'react-native';
 import { ACTIVIDADES } from '../comun/actividades';
 
 
@@ -24,18 +24,12 @@ function Historia() {
     );  
 }
 
-class QuienesSomos extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            actividades: ACTIVIDADES
-        };
-    }
 
-     
-    render(){
-
+function RenderQuienesSomos(props) {
+    const actividades = props.actividades;
+    
     const renderQuienesSomosItem = ({item, index}) => {
+        
         return (
             <ListItem key={index} bottomDivider>
                 <Avatar source={require('./imagenes/40Años.png')} />
@@ -44,21 +38,35 @@ class QuienesSomos extends Component {
                     <ListItem.Subtitle>{item.descripcion}</ListItem.Subtitle>
                 </ListItem.Content>
             </ListItem> 
-        );
-    };
+          );
+      };
+      
+      return (
+        <Card>
+          <Card.Title>Comentarios</Card.Title>
+          <Card.Divider/>
+          <FlatList 
+              data={actividades}
+              renderItem={renderQuienesSomosItem}
+              keyExtractor={item => item.id.toString()}
+              />
+        </Card>
+      );
+  }
+
+class QuienesSomos extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            actividades: ACTIVIDADES
+        };
+    }
      
+    render(){
     return(
         <ScrollView>
             <Historia/>
-            <Card>
-                <Card.Title>"Actividades y recursos"</Card.Title>
-                <Card.Divider/>
-                <FlatList 
-                    data={this.state.actividades}
-                    renderItem={renderQuienesSomosItem}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </Card>
+            <RenderQuienesSomos actividades={this.state.actividades}/>
         </ScrollView>
     );
   } 
