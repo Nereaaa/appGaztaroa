@@ -34,7 +34,7 @@ function CustomDrawerContent(props) {
   );
 }
 
-function CalendarioNavegador() {
+function CalendarioNavegador({navigation}) {
   return (
     <Stack.Navigator
       initialRouteName="Calendario"
@@ -43,6 +43,7 @@ function CalendarioNavegador() {
         headerStyle: { backgroundColor: '#015afc' },
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
+        
       }}
     >
       <Stack.Screen
@@ -50,6 +51,15 @@ function CalendarioNavegador() {
         component={Calendario}
         options={{
           title: 'Calendario Gaztaroa',
+          headerLeft: () => (
+            <Icon 
+              name="menu" 
+              size={28} 
+              color= 'white' 
+              onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer())}
+              
+            />
+          ),
         }}
       />
       <Stack.Screen
@@ -63,7 +73,7 @@ function CalendarioNavegador() {
   );
 }
 
-function HomeNavegador() {
+function HomeNavegador({navigation}) {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -73,6 +83,15 @@ function HomeNavegador() {
         headerStyle: { backgroundColor: '#015afc' },
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
+        headerLeft: () => (
+          <Icon 
+            name="menu" 
+            size={28} 
+            color= 'white' 
+            onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer())}
+            
+          />
+        ),
       }}
     >
       <Stack.Screen
@@ -86,7 +105,7 @@ function HomeNavegador() {
   );
 }
 
-function ContactoNavegador() {
+function ContactoNavegador({navigation}) {
   return (
     <Stack.Navigator
       initialRouteName="Contacto"
@@ -96,6 +115,15 @@ function ContactoNavegador() {
         headerStyle: { backgroundColor: '#015afc' },
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
+        headerLeft: () => (
+          <Icon 
+            name="menu" 
+            size={28} 
+            color= 'white' 
+            onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer())}
+            
+          />
+        ),
       }}
     >
       <Stack.Screen
@@ -109,7 +137,7 @@ function ContactoNavegador() {
   );
 }
 
-function QuienesSomosNavegador(navigation) {
+function QuienesSomosNavegador({navigation}) {
   return (
     <Stack.Navigator
       initialRouteName="Quienes Somos"
@@ -125,6 +153,7 @@ function QuienesSomosNavegador(navigation) {
             size={28} 
             color= 'white' 
             onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer())}
+            
           />
         ),
       }}
