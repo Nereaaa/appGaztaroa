@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View } from 'react-native';
+import { Text, ScrollView, View, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 import { EXCURSIONES } from '../comun/excursiones';
 import { CABECERAS } from '../comun/cabeceras';
@@ -14,8 +14,8 @@ function RenderItem(props) {
                 <Card>
                     <Card.Divider/>
                     <Card.Image source={require('./imagenes/40Años.png')} >
-                        <View style={{position: 'absolute', top: -100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                            <Card.Title style={{color:'chocolate', fontSize: 33}}>{item.nombre}</Card.Title>
+                        <View style={styles.drawerView}>
+                            <Card.Title style={styles.drawerTitle}>{item.nombre}</Card.Title>
                         </View>
                     </Card.Image>
                     <Text style={{margin: 20}}>
@@ -53,4 +53,22 @@ class Home extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+      },
+      drawerView: {
+        position: 'absolute', 
+        top: -100, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+      },
+      drawerTitle: {
+        color:'chocolate', 
+        fontSize: 33
+      }
+    });
 export default Home;
