@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Icon } from 'react-native-elements';
 import { EXCURSIONES } from '../comun/excursiones';
-import { Text, View, ScrollView, FlatList} from 'react-native';
+import { Text, View, ScrollView, StyleSheet, FlatList} from 'react-native';
 import { COMENTARIOS } from '../comun/comentarios';
+import { baseUrl } from '../comun/comun';
 
 function RenderExcursion(props) {
 
@@ -11,9 +12,11 @@ function RenderExcursion(props) {
         if (excursion != null) {
             return(
             <Card>
-              <Card.Title>{excursion.nombre}</Card.Title>
-              <Card.Divider/>
-              <Card.Image source={require('./imagenes/40Años.png')}></Card.Image>
+              <Card.Image source={{uri: baseUrl + excursion.imagen}}>
+                <View style={styles.drawerView}>
+                    <Card.Title style={styles.drawerTitle}>{excursion.nombre}</Card.Title>
+                </View>
+                </Card.Image>
               <Text style={{margin: 20}}>
                 {excursion.descripcion}
               </Text>
@@ -96,4 +99,23 @@ class DetalleExcursion extends Component {
   } 
 }
 
+
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+    },
+    drawerView: {
+      position: 'absolute', 
+      top: 0, 
+      left: 0, 
+      right: 0, 
+      bottom: 0, 
+      justifyContent: 'center', 
+      alignItems: 'center'
+    },
+    drawerTitle: {
+      color:'white', 
+      fontSize: 33
+    }
+  });
 export default DetalleExcursion;

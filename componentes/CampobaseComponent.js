@@ -6,12 +6,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './HomeComponent';
 import Contacto from './ContactoComponent';
 import QuienesSomos from './QuienesSomosComponent';
-
 import { View, StyleSheet, Image, Text } from 'react-native';
 import { createDrawerNavigator,   DrawerContentScrollView, DrawerItemList, } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import { colorGaztaroaOscuro, colorGaztaroaClaro } from '../comun/comun';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -22,7 +22,7 @@ function CustomDrawerContent(props) {
       <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
         <View style={styles.drawerHeader}>
           <View style={{flex:1}}>
-          <Image source={require('./imagenes/logo.png')} style={styles.drawerImage} />
+          <Image source={require('./imagenes/logo.png')} style={styles.drawerImage}/>
           </View>
           <View style={{flex: 2}}>
             <Text style={styles.drawerHeaderText}> Gaztaroa</Text>
@@ -40,7 +40,7 @@ function CalendarioNavegador({navigation}) {
       initialRouteName="Calendario"
       screenOptions={{
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: colorGaztaroaOscuro},
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
         
@@ -80,7 +80,7 @@ function HomeNavegador({navigation}) {
       headerMode="screen"
       screenOptions={{
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: colorGaztaroaOscuro},
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
         headerLeft: () => (
@@ -112,7 +112,7 @@ function ContactoNavegador({navigation}) {
       headerMode="screen"
       screenOptions={{
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
         headerLeft: () => (
@@ -144,7 +144,7 @@ function QuienesSomosNavegador({navigation}) {
       headerMode="screen"
       screenOptions={{
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
         headerTitleAlign: 'center',
         headerLeft: () => (
@@ -174,13 +174,11 @@ function DrawerNavegador() {
   return (
     <Drawer.Navigator
       drawerStyle={{
-        backgroundColor: '#c2d3da',
+        backgroundColor: colorGaztaroaClaro,
       }}
       initialRouteName="Home"
       drawerContent={props => <CustomDrawerContent {...props} />}
     >
-
-
         <Drawer.Screen name="Campo base" component={HomeNavegador} 
          options={{
           drawerIcon: ({ tintColor }) => (
@@ -249,7 +247,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   drawerHeader: {
-    backgroundColor: '#015afc',
+    backgroundColor: colorGaztaroaOscuro,
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',

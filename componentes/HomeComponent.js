@@ -4,6 +4,7 @@ import { Card } from 'react-native-elements';
 import { EXCURSIONES } from '../comun/excursiones';
 import { CABECERAS } from '../comun/cabeceras';
 import { ACTIVIDADES } from '../comun/actividades';
+import { baseUrl } from '../comun/comun';
 
 function RenderItem(props) {
     
@@ -13,7 +14,7 @@ function RenderItem(props) {
             return(
                 <Card>
                     <Card.Divider/>
-                    <Card.Image source={require('./imagenes/40Años.png')} >
+                    <Card.Image source={{uri: baseUrl + item.imagen}}>
                         <View style={styles.drawerView}>
                             <Card.Title style={styles.drawerTitle}>{item.nombre}</Card.Title>
                         </View>
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
       },
       drawerView: {
         position: 'absolute', 
-        top: -100, 
+        top: 0, 
         left: 0, 
         right: 0, 
         bottom: 0, 
