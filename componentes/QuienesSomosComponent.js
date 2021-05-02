@@ -4,7 +4,14 @@ import { Card } from 'react-native-elements';
 import { ListItem, Avatar } from 'react-native-elements';
 import {  FlatList } from 'react-native';
 import { baseUrl } from '../comun/comun';
-import {ACTIVIDADES} from '../comun/actividades';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+      actividades: state.actividades
+    }
+  }
+
 
 function Historia() {
     return(
@@ -43,10 +50,10 @@ function RenderQuienesSomos(props) {
       
       return (
         <Card>
-          <Card.Title>Comentarios</Card.Title>
+          <Card.Title>Actividades</Card.Title>
           <Card.Divider/>
           <FlatList 
-              data={actividades}
+              data={actividades.actividades}
               renderItem={renderQuienesSomosItem}
               keyExtractor={item => item.id.toString()}
               />
@@ -54,21 +61,16 @@ function RenderQuienesSomos(props) {
       );
   }
 class QuienesSomos extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            actividades: ACTIVIDADES
-        };
-    }
+   
      
     render(){
     return(
         <ScrollView>
             <Historia/>
-            <RenderQuienesSomos actividades={this.state.actividades}/>
+            <RenderQuienesSomos actividades={this.props.actividades}/>
         </ScrollView>
     );
   } 
 }
 
-export default QuienesSomos;
+export default connect(mapStateToProps)(QuienesSomos);
