@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, StyleSheet } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-      actividades: state.actividades,
       excursiones: state.excursiones,
-      cabeceras: state.cabeceras
+      cabeceras: state.cabeceras,
+      actividades: state.actividades
     }
   }
 
@@ -19,11 +19,8 @@ function RenderItem(props) {
         if (item != null) {
             return(
                 <Card>
-                    <Card.Divider/>
-                    <Card.Image source={{uri: baseUrl + item.imagen}}>
-                        <View style={styles.drawerView}>
-                            <Card.Title style={styles.drawerTitle}>{item.nombre}</Card.Title>
-                        </View>
+                    <Card.Image source = {{ uri: baseUrl + item.imagen }}>
+                        <Card.Title style={styles.cardTitleStyle}>{item.nombre}</Card.Title>
                     </Card.Image>
                     <Text style={{margin: 20}}>
                         {item.descripcion}
@@ -35,7 +32,6 @@ function RenderItem(props) {
             return(<View></View>);
         }
 }
-
 
 class Home extends Component {
 
@@ -52,21 +48,14 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-      },
-      drawerView: {
-        position: 'absolute', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        bottom: 0, 
-        justifyContent: 'center', 
-        alignItems: 'center'
-      },
-      drawerTitle: {
-        color:'chocolate', 
-        fontSize: 33
-      }
-    });
-    export default connect(mapStateToProps)(Home);
+    cardTitleStyle: {
+      color: 'chocolate',
+      fontWeight: 'bold',
+      fontSize: 30,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 50,
+    },
+  });
+
+  export default connect(mapStateToProps)(Home);

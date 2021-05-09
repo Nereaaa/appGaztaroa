@@ -11,7 +11,7 @@ const mapStateToProps = state => {
   }
 
 class Calendario extends Component {
-  
+
     render(){
 
     const { navigate } = this.props.navigation;    
@@ -22,7 +22,7 @@ class Calendario extends Component {
                 key={index}
                 onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
                 bottomDivider>
-                <Avatar source={{uri: baseUrl + item.imagen}}/>
+                <Avatar source={{uri: baseUrl + item.imagen}} />
                 <ListItem.Content>
                     <ListItem.Title>{item.nombre}</ListItem.Title>
                     <ListItem.Subtitle>{item.descripcion}</ListItem.Subtitle>
