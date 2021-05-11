@@ -14,6 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorGaztaroaOscuro, colorGaztaroaClaro } from '../comun/comun';
 import { connect } from 'react-redux';
 import { fetchExcursiones, fetchComentarios, fetchCabeceras, fetchActividades } from '../redux/ActionCreators';
+import PruebaEsfuerzo from './PruebaEsfuerzoComponent';
 
 const mapStateToProps = state => {
   return {
@@ -133,6 +134,28 @@ function ContactoNavegador({ navigation }) {
   );
 }
 
+function PruebaEsfuerzoNavegador({ navigation }) {
+  return (
+    <Stack.Navigator
+      initialRouteName="PruebaEsfuerzo"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
+        headerTitleStyle: { color: '#fff' },
+        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+      }}
+    >
+      <Stack.Screen
+        name="Prueba de esfuerzo"
+        component={PruebaEsfuerzo}
+        options={{
+          title: 'Prueba de esfuerzo',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
@@ -201,6 +224,18 @@ function DrawerNavegador() {
             drawerIcon: ({ tintColor}) => (
               <Icon
               name='address-card'
+              type='font-awesome'            
+              size={22}
+              color={tintColor}
+              />
+            )
+            }}
+        />
+         <Drawer.Screen name="Prueba de esfuerzo" component={PruebaEsfuerzoNavegador}
+          options={{
+            drawerIcon: ({ tintColor}) => (
+              <Icon
+              name='heartbeat'
               type='font-awesome'            
               size={22}
               color={tintColor}
