@@ -5,6 +5,7 @@ import { FlatList } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
+import {IndicadorActividad} from './IndicadorActividadComponent';
 
 const mapStateToProps = state => {
     return {
@@ -45,21 +46,42 @@ class QuienesSomos extends Component {
             </ListItem> 
             );
         };
-
-        return(
-            <ScrollView>
+        if (this.props.actividades.isLoading){
+            return(
+                <ScrollView>
                 <Historia />
                 <Card>
                     <Card.Title>"Actividades y recursos"</Card.Title>
                     <Card.Divider/>
-                    <FlatList 
-                    data={this.props.actividades.actividades}
-                    renderItem={renderActividadItem}
-                    keyExtractor={item => item.id.toString()}
-                    />
-                </Card>
+                    <IndicadorActividad/>
+                    </Card>
             </ScrollView>
-        );
+            );
+        }else if(this.props.actividades.errMess){
+            return(
+                <View>
+                    <Text>{props.errMess}</Text>
+                </View>
+            );
+        }
+        else{
+            return(
+                <ScrollView>
+                    <Historia />
+                    <Card>
+                        <Card.Title>"Actividades y recursos"</Card.Title>
+                        <Card.Divider/>
+                        <FlatList 
+                        data={this.props.actividades.actividades}
+                        renderItem={renderActividadItem}
+                        keyExtractor={item => item.id.toString()}
+                        isLoading={this.props.actividades.isLoading}
+                        errMess={this.props.actividades.errMess}
+                        />
+                    </Card>
+                </ScrollView>
+            );
+        }
     }
 }
 

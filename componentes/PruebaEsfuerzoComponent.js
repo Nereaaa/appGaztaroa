@@ -72,7 +72,7 @@ class PruebaEsfuerzo extends Component {
             </View>
  
             <View style={styles.formRow}>
-                <Text style={styles.formLabel}>DÃ­a y hora</Text>
+                <Text style={styles.formLabel}>Día y hora</Text>
                 <Button
                   onPress={() => this.setState({showdate: true})}
                   title="Calendario"
@@ -118,7 +118,7 @@ class PruebaEsfuerzo extends Component {
                     <Text style = {styles.modalTitle}>Detalle de la reserva</Text>
                     <Text style = {styles.modalText}>Edad: {this.state.edad}</Text>
                     <Text style = {styles.modalText}>Federado?: {this.state.federado ? 'Si' : 'No'}</Text>
-                    <Text style={styles.modalText}>Dí­a y hora: {this.state.fecha.getDate()}/{this.state.fecha.getMonth()+1}/{this.state.fecha.getFullYear()} {this.state.fecha.getHours()}:{this.state.fecha.getMinutes()}</Text>
+                    <Text style={styles.modalText}>Di­a y hora: {this.state.fecha.getDate()}/{this.state.fecha.getMonth()+1}/{this.state.fecha.getFullYear()} {this.state.fecha.getHours()}:{this.state.fecha.getMinutes()}</Text>
                     <Button 
                         onPress = {() =>{this.toggleModal(); this.resetForm();}}
                         color={colorGaztaroaOscuro}
