@@ -37,6 +37,11 @@ export const postFavorito = (excursionId)  => (dispatch) => {
     }, 2000);
 };
 
+export const borrarFavorito = (excursionId) => ({
+    type: ActionTypes.BORRAR_FAVORITO,
+    payload: excursionId
+}); 
+
 export const addFavorito = (excursionId) => ({
     type: ActionTypes.ADD_FAVORITO,
     payload: excursionId
