@@ -27,7 +27,7 @@ class VistaFavoritos extends Component {
             [
                 {
                     text: "Cancelar",
-                    onPress: () => console.log(item.nombre + ' Favorito no borrado')
+                    onPress: () => console.log(item.nombre + ' Excursión favorita no borrada')
                 },
                 {
                     text: "OK",
